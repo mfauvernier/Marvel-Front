@@ -1,7 +1,10 @@
+// Import Images
+import unavailable from "../img/unavailable.png";
+
+// Import Packages
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import unavailable from "../img/unavailable.png";
 import { Grid as Loader } from "react-loader-spinner";
 
 const CharacterComics = () => {
@@ -44,10 +47,13 @@ const CharacterComics = () => {
         </div>
       ) : (
         <main>
-          <div className="container">
+          <div className="container main">
             <div className="character-comic-block">
               <div className="top-character">
-                <p>{data.name}</p>
+                <div className="favorite-character">
+                  <p>{data.name}</p>
+                  <button>Ajouter ce personnage aux favoris</button>
+                </div>
                 <img
                   src={
                     data.thumbnail.path ===

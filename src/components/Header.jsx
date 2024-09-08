@@ -1,4 +1,7 @@
+// Import Images
 import logo from "../img/marvel-logo.png";
+
+// Import Packages
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 

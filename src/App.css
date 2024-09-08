@@ -19,6 +19,7 @@ a {
 
 .main {
   box-shadow: 0px 0px 10px 1px #b5b5b5;
+  margin-bottom: 40px;
 }
 
 .container-home {
@@ -126,7 +127,7 @@ a {
   flex-direction: column;
   justify-content: space-between;
   width: 200px;
-  height: 300px;
+  height: 350px;
   border: 1px solid #dddddd;
   border-radius: 10px;
   overflow: hidden;
@@ -151,6 +152,12 @@ a {
   margin: 10px 0;
 }
 
+.text {
+  flex-grow: 1;
+  overflow: auto;
+  max-height: 130px;
+}
+
 /* ======================================================================== */
 /* ======================================================================== */
 /* ====================  CHARACTERS COMICS  =============================== */
@@ -158,18 +165,18 @@ a {
 /* ======================================================================== */
 
 .character-comic-block {
-  border: 2px solid green;
+  border-radius: 10px;
 }
 
 .top-character {
   width: 100%;
   display: flex;
-  /* flex-direction: column; */
   gap: 50px;
   align-items: center;
   justify-content: center;
   padding: 30px 0;
   background-color: white;
+  border-radius: 10px 10px 0 0;
 }
 
 .top-character p {
@@ -191,6 +198,20 @@ a {
   border-radius: 10px;
 }
 
+.favorite-character {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.favorite-character button {
+  width: 300px;
+  margin-top: 40px;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  height: 30px;
+}
 /* ======================================================================== */
 /* ======================================================================== */
 /* ===============================  COMICS  =============================== */
@@ -210,7 +231,7 @@ a {
   flex-direction: column;
   justify-content: space-between;
   width: 200px;
-  height: 300px;
+  height: 350px;
   border: 1px solid #dddddd;
   border-radius: 10px;
   overflow: hidden;
@@ -223,6 +244,7 @@ a {
   width: 100px;
   object-fit: cover;
   border-radius: 10px;
+  margin: 10px 0;
 }
 
 .comic-block p {
@@ -232,4 +254,61 @@ a {
 .title {
   font-size: 20px;
   margin: 10px 0;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ======================================================================== */
+/* ======================================================================== */
+/* ===============================  COMIC ================================= */
+/* ======================================================================== */
+/* ======================================================================== */
+
+.comic-comic-block {
+  border-radius: 10px;
+}
+
+.top-comic {
+  width: 100%;
+  display: flex;
+  gap: 50px;
+  align-items: center;
+  justify-content: center;
+  padding: 30px 0;
+  background-color: white;
+  border-radius: 10px 10px 0 0;
+}
+
+.top-comic p {
+  font-size: 70px;
+  color: black;
+}
+
+.comic-comic-block img {
+  height: 300px;
+  width: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.comic-description {
+  font-size: 30px;
+  padding: 30px;
+}
+
+.favorite-comic {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.favorite-comic button {
+  width: 300px;
+  margin-top: 40px;
+  background-color: black;
+  color: white;
+  border-radius: 5px;
+  height: 30px;
 }

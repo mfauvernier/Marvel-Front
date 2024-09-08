@@ -113,13 +113,16 @@ const Characters = ({ search, page, setPage, setSearch }) => {
                           }
                           alt={result.name}
                         />
-                        <p>
-                          {result.description
-                            ? result.description
-                            : "Pas de description pour ce personnage."}
-                        </p>
+                        <div className="text">
+                          <p>
+                            {result.description
+                              ? result.description
+                              : "Pas de description pour ce personnage."}
+                          </p>
+                        </div>
                       </div>
                     </Link>
+                    {/* <button>Ajouter aux favoris</button> */}
                   </>
                 );
               })}

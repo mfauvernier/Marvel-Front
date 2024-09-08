@@ -111,8 +111,13 @@ const Comics = ({ search, page, setPage, setSearch }) => {
                         }
                         alt={result.title}
                       />
-
-                      <p>{result.description}</p>
+                      <div className="text">
+                        <p>
+                          {result.description
+                            ? result.description
+                            : "Pas de description pour ce comic."}
+                        </p>
+                      </div>
                     </div>
                   </Link>
                 );
