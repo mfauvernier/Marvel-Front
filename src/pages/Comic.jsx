@@ -29,6 +29,31 @@ const Comic = () => {
     fetchData();
   }, [comicId]);
 
+  const addToFavorites = () => {
+    try {
+      const favoritesFromStorage = JSON.parse(
+        localStorage.getItem("favorites")
+      ) || { characters: [], comics: [] };
+
+      const favoriteComics = favoritesFromStorage.comics || [];
+
+      const isFavorite = favoriteComics.find((fav) => fav._id === data._id);
+
+      if (!isFavorite) {
+        const updatedFavorites = {
+          ...favoritesFromStorage,
+          comics: [...favoriteComics, data],
+        };
+        localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+        alert("Comic ajouté aux favoris !");
+      } else {
+        alert("Ce comic est déjà dans vos favoris.");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <>
       {isLoading ? (
@@ -54,7 +79,9 @@ const Comic = () => {
               />
               <div className="favorite-comic">
                 <p>{data.title}</p>
-                <button>Ajouter ce comic aux favoris</button>
+                <button onClick={() => addToFavorites(data)}>
+                  Ajouter ce comic aux favoris
+                </button>
               </div>
             </div>
             <p className="comic-description">{data.description}</p>

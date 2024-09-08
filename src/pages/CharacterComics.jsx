@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 const CharacterComics = () => {
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
+
   const { characterId } = useParams();
 
   useEffect(() => {
@@ -27,6 +28,32 @@ const CharacterComics = () => {
     };
     fetchData();
   }, [characterId]);
+
+  const addToFavorites = (character) => {
+    try {
+      const favorites = JSON.parse(localStorage.getItem("favorites")) || {
+        characters: [],
+        comics: [],
+      };
+      const favoriteCharacters = favorites.characters || [];
+      const isFavorite = favoriteCharacters.find(
+        (fav) => fav._id === character._id
+      );
+      if (!isFavorite) {
+        favoriteCharacters.push(character);
+        const updatedFavorites = {
+          ...favorites,
+          characters: favoriteCharacters,
+        };
+        localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
+        alert("Personnage ajouté aux favoris !");
+      } else {
+        alert("Ce personnage est déjà dans vos favoris.");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   if (isLoading) {
     return (
@@ -48,9 +75,11 @@ const CharacterComics = () => {
       <div className="container main">
         <div className="character-comic-block">
           <div className="top-character">
-            <div className="favorite-character">
+            <div className="one-character">
               <p>{data.name}</p>
-              <button>Ajouter ce personnage aux favoris</button>
+              <button onClick={() => addToFavorites(data)}>
+                Ajouter ce personnage aux favoris
+              </button>
             </div>
             <img
               src={
