@@ -17,6 +17,8 @@ import Favorites from "./pages/Favorites";
 function App() {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
+  const [characterFavorites, setCharacterFavorites] = useState([]);
+  // const [comicFavorites, setComicFavorites] = useState([]);
 
   return (
     <>
@@ -46,10 +48,21 @@ function App() {
               />
             }
           />
-          <Route path="/comics/:characterId" element={<CharacterComics />} />
+          <Route
+            path="/comics/:characterId"
+            element={
+              <CharacterComics
+                characterFavorites={characterFavorites}
+                setCharacterFavorites={setCharacterFavorites}
+              />
+            }
+          />
           <Route path="/comic/:comicId" element={<Comic />} />
           <Route path="/character/:characterId" />
-          <Route path="/favorites" element={<Favorites />} />
+          <Route
+            path="/favorites"
+            element={<Favorites characterFavorites={characterFavorites} />}
+          />
         </Routes>
       </Router>
     </>

@@ -14,7 +14,13 @@ const Header = ({ search, setSearch, setPage }) => {
     <header>
       <div className="container">
         <div className="header">
-          <Link to="/">
+          <Link
+            to="/characters"
+            onClick={() => {
+              setPage(1);
+              setSearch("");
+            }}
+          >
             <img src={logo} alt="Marvel Logo" />
           </Link>
           <input

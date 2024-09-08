@@ -1,7 +1,7 @@
 const Favorites = () => {
   return (
     <div className="container main">
-      <p>Je suis sur la page Favoris</p>{" "}
+      <p>Aucun favori pour le moment.</p>
     </div>
   );
 };
