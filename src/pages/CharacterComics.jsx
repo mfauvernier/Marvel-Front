@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import unavailable from "../img/unavailable.png";
+import { Grid as Loader } from "react-loader-spinner";
 
 const CharacterComics = () => {
   const [data, setData] = useState();
@@ -28,27 +30,57 @@ const CharacterComics = () => {
   return (
     <div>
       {isLoading ? (
-        <p>Chargement ...</p>
+        <div className="container-loader">
+          <Loader
+            visible={true}
+            height="160"
+            width="160"
+            color="black"
+            ariaLabel="grid-loading"
+            radius="12.5"
+            wrapperStyle={{}}
+            wrapperClass="grid-wrapper"
+          />
+        </div>
       ) : (
-        <div>
-          <p>{data.name}</p>
-          <p>{data.description}</p>
-          {data.comics.map((comic) => {
-            return (
-              <>
-                <p>{comic.title}</p>
+        <main>
+          <div className="container">
+            <div className="character-comic-block">
+              <div className="top-character">
+                <p>{data.name}</p>
                 <img
                   src={
-                    comic.thumbnail.path +
-                    "/portrait_medium." +
-                    comic.thumbnail.extension
+                    data.thumbnail.path ===
+                      "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available" ||
+                    data.thumbnail.path ===
+                      "http://i.annihil.us/u/prod/marvel/i/mg/f/60/4c002e0305708"
+                      ? unavailable
+                      : data.thumbnail.path + "." + data.thumbnail.extension
                   }
-                  alt=""
+                  alt={data.name}
                 />
-              </>
-            );
-          })}
-        </div>
+              </div>
+              {data.comics.map((comic) => {
+                return (
+                  <div className="character-comic" key={comic.title}>
+                    <p>{comic.title}</p>
+                    <img
+                      src={
+                        comic.thumbnail.path ===
+                        "http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available"
+                          ? unavailable
+                          : comic.thumbnail.path +
+                            "/portrait_medium." +
+                            comic.thumbnail.extension
+                      }
+                      alt={comic.title}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </main>
       )}
     </div>
   );

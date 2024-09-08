@@ -106,7 +106,7 @@ const Comics = ({ search, page, setPage, setSearch }) => {
                             "http://i.annihil.us/u/prod/marvel/i/mg/9/70/55ae776a0cb39"
                             ? unavailable
                             : result.thumbnail.path +
-                              "/portrait_medium." +
+                              "." +
                               result.thumbnail.extension
                         }
                         alt={result.title}
@@ -117,30 +117,30 @@ const Comics = ({ search, page, setPage, setSearch }) => {
                   </Link>
                 );
               })}
-              <Stack>
-                <Pagination
-                  className="pagination-container"
-                  page={page}
-                  onChange={(event, value) => {
-                    setPage(value);
-                  }}
-                  size="large"
-                  sx={{
-                    "& .MuiPaginationItem-root": { color: "#999999" },
-                    "& .MuiPaginationItem-root:hover": {
-                      color: "black",
-                      backgroundColor: "red",
-                    },
-                    "& .Mui-selected": {
-                      color: "black",
-                      backgroundColor: "red !important",
-                    },
-                    "& .Mui-selected:hover": { backgroundColor: "orange" },
-                  }}
-                  count={Math.ceil(data.count / limit)}
-                />
-              </Stack>
             </div>
+            <Stack>
+              <Pagination
+                className="pagination-container"
+                page={page}
+                onChange={(event, value) => {
+                  setPage(value);
+                }}
+                size="large"
+                sx={{
+                  "& .MuiPaginationItem-root": { color: "#999999" },
+                  "& .MuiPaginationItem-root:hover": {
+                    color: "black",
+                    backgroundColor: "red",
+                  },
+                  "& .Mui-selected": {
+                    color: "black",
+                    backgroundColor: "red !important",
+                  },
+                  "& .Mui-selected:hover": { backgroundColor: "orange" },
+                }}
+                count={Math.ceil(data.count / limit)}
+              />
+            </Stack>
           </div>
         </main>
       )}

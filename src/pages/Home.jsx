@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Home = (setHome) => {
   return (
-    <div>
+    <div className="container-home">
       <Link
         to="/characters"
         onClick={() => {
